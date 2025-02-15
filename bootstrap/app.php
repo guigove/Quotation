@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Middleware\ApiResponseMidddleware;
 use App\Http\Middleware\ForceJsonResponseMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
