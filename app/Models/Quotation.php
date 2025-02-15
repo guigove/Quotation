@@ -89,7 +89,7 @@ class Quotation extends Model
             } elseif ($age >= 61 && $age <= 70) {
                 $loads[] = 1;
             } else {
-                throw new InvalidArgumentException('The age must be between 18 and 70 years');
+                throw new InvalidArgumentException('The age must be from 18 to 70 years old');
             }
         }
 
