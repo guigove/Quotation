@@ -34,6 +34,6 @@ class JsonRequestMiddlewareTest extends TestCaseWithAuth
         $response = $this->post('api/quotation', $data, $this->headers());
 
         $response->assertStatus(400)
-                 ->assertJson(['error' => 'Content-Type must be application/json']);
+                 ->assertJson(['message' => 'Content-Type must be application/json']);
     }
 }

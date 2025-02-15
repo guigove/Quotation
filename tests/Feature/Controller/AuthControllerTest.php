@@ -30,7 +30,9 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-                 ->assertJsonStructure(['token']);
+                ->assertJsonStructure([
+                    'data' => ['token']
+                ]);
     }
 
     /** @test */
@@ -42,7 +44,7 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response->assertStatus(401)
-                 ->assertJson(['error' => 'Invalid credentials']);
+                ->assertJson(['message' => 'Invalid credentials']);
     }
 
     /** @test */
@@ -51,7 +53,7 @@ class AuthControllerTest extends TestCase
         $response = $this->postJson('api/login', []);
 
         $response->assertStatus(422)
-                 ->assertJsonValidationErrors(['email', 'password']);
+                ->assertJsonValidationErrors(['email', 'password']);
     }
 }
 

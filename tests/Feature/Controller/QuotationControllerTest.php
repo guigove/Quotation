@@ -19,7 +19,7 @@ class QuotationControllerTest extends TestCaseWithAuth
 
         $response = $this->postJson('api/quotation', $data, $this->headers());
         $response->assertStatus(200)
-                 ->assertJsonStructure(['total', 'currency_id', 'quotation_id']);
+                 ->assertJsonStructure(['data' => ['total', 'currency_id', 'quotation_id']]);
 
         $quotation = Quotation::where($data)->latest()->first();
         $expectedTotal = round((0.6  * 3 * 5) + (0.7 * 3 * 5) + (0.8 * 3 * 5), 2);
