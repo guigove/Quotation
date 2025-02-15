@@ -29,19 +29,19 @@ class QuotationController extends Controller
             $quotation->calculate();
     
             if (!$quotation->save()) {
-                return response()->json(['error' => 'Failed to quote'], 500);
+                return response()->error('Failed to quote', 500);
             }
     
-            return response()->json([
+            return response()->success([
                 'total' => $quotation->total,
                 'currency_id' => $quotation->currency_id,
                 'quotation_id' => $quotation->id
             ]);
     
         } catch (\InvalidArgumentException $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+            return response()->error($e->getMessage());
         } catch (\Exception $e) {
-            return response()->json(['error' => 'An unexpected error occurred', 'message' => $e->getMessage()], 500);
+            return response()->error($e->getMessage(), 500);
         }
     }
 }

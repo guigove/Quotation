@@ -16,7 +16,7 @@ class JsonRequestMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->isJson()) {
-            return response()->json(['error' => 'Content-Type must be application/json'], 400);
+            return response()->error('Content-Type must be application/json');
         }
 
         return $next($request);
