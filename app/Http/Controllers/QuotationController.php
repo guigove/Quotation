@@ -39,7 +39,7 @@ class QuotationController extends Controller
             ]);
     
         } catch (\InvalidArgumentException $e) {
-            return response()->error($e->getMessage());
+            return response()->error($e->getMessage(), $e->getCode());
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), 500);
         }

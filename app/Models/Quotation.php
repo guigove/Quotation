@@ -59,7 +59,7 @@ class Quotation extends Model
         $end = Carbon::parse($this->end_date);
 
         if ($end->lt($start)) {
-            throw new InvalidArgumentException('The end date must be a date after or equal to start date');
+            throw new InvalidArgumentException('The end date must be a date after or equal to start date', 422);
         }
 
         return $start->diffInDays($end) + 1;
@@ -89,7 +89,7 @@ class Quotation extends Model
             } elseif ($age >= 61 && $age <= 70) {
                 $loads[] = 1;
             } else {
-                throw new InvalidArgumentException('The age must be from 18 to 70 years old');
+                throw new InvalidArgumentException('The age must be from 18 to 70 years old', 422);
             }
         }
 
