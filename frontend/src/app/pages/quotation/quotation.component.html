@@ -1,0 +1,43 @@
+<div>
+    <h2>Quotation Form</h2>
+  
+    <form (ngSubmit)="getQuotation()" #quotationForm="ngForm">
+      <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate" required />
+      </div>
+  
+      <div>
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate" required />
+      </div>
+  
+      <div>
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" [(ngModel)]="age" required />
+      </div>
+  
+      <div >
+        <label for="currency">Currency</label>
+        <select id="currency" name="currency" [(ngModel)]="currency" required>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="!quotationForm.valid">Get Quote</button>
+    </form>
+    
+    <div *ngIf="quotationResponse">
+      <h2>Quotation Result:</h2>
+      <p><strong>Currency:</strong> {{ quotationResponse.currency_id }}</p>
+      <p><strong>Quotation ID:</strong> {{ quotationResponse.quotation_id }}</p>
+      <p><strong>Total:</strong> {{ quotationResponse.total }}</p>
+    </div>
+    
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+</div>
+  
