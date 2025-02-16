@@ -1,0 +1,26 @@
+services:
+    phpmyadmin:
+        depends_on:
+            - mysql
+        image: phpmyadmin/phpmyadmin
+        environment:
+            - PMA_HOST=mysql
+            - PMA_PORT=3306
+        networks:
+            - sail
+        ports:
+          - 8001:80
+
+    angular:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "4200:4200"
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
+        working_dir: /app
+        command: npm start -- --host 0.0.0.0
+        depends_on:
+            - laravel.test
