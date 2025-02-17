@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quotation;
+use App\Rules\AgeRange;
 use App\Rules\AllowedCurrencies;
 use App\Rules\CommaSeparatedNumbers;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class QuotationController extends Controller
     public function quotation(Request $request)
     {
         $request->validate([
-            'age' => ['required', 'string', new CommaSeparatedNumbers] ,
+            'age' => ['required', 'string', new CommaSeparatedNumbers, new AgeRange] ,
             'currency_id' => ['required', 'string', new AllowedCurrencies],
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
@@ -37,9 +38,6 @@ class QuotationController extends Controller
                 'currency_id' => $quotation->currency_id,
                 'quotation_id' => $quotation->id
             ]);
-    
-        } catch (\InvalidArgumentException $e) {
-            return response()->error($e->getMessage(), $e->getCode());
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), 500);
         }
