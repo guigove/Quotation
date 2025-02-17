@@ -28,7 +28,7 @@ Ensure you have the following installed:
    This script will:
 
    - Create the .env file if it doesn't exists
-   - Create the vendor file if it doesn't exists
+   - Create the vendor folder if it doesn't exists
    - Start Laravel Sail containers
    - Install backend dependencies
    - Generate application keys
@@ -55,7 +55,6 @@ composer install
 ./vendor/bin/sail artisan migrate --seed
 ./vendor/bin/sail artisan jwt:secret
 ```
-
 
 > **Note:** Even when setting up manually, the default user with the following credentials will be created:
 
