@@ -6,7 +6,12 @@ if [ ! -f ".env" ]; then
     cp .env.example .env
 fi
 
+if [ ! -d "vendor" ]; then
+    composer install
+fi
+
 ./vendor/bin/sail up -d --build
+
 ./vendor/bin/sail composer install
 
 ./vendor/bin/sail artisan key:generate
