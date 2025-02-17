@@ -76,8 +76,6 @@ class Quotation extends Model
         $ages = explode(',', $this->age);
 
         foreach ($ages as $age) {
-            $age = intval($age);
-
             if ($age >= 18 && $age <= 30) {
                 $loads[] = 0.6;
             } elseif ($age >= 31 && $age <= 40) {
