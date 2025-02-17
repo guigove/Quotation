@@ -42,7 +42,7 @@ Ensure you have the following installed:
    - Backend API: `http://localhost`
    - Frontend: `http://localhost:4200`
 
-## Manual Setup (If Not Using setup.sh)
+## Manual Setup (If not using setup.sh)
 
 If you prefer to set up manually, follow these steps:
 
